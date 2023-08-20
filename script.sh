@@ -25,8 +25,11 @@ fi
 
 echo $train_file,$dev_distractor,$dev_fullwiki
 
+echo -e "\n\n#### Ouput for preprocess -- train ######## \n\n" 2>&1 | tee -a output.txt
 python main.py --mode prepro --data_file "$train_file" --para_limit 2250 --data_split train 2>&1 | tee -a output.txt
 
+echo -e "\n\n#### Ouput for preprocess -- dev_distractor ######## \n\n" 2>&1 | tee -a output.txt
 python main.py --mode prepro --data_file "$dev_distractor" --para_limit 2250 --data_split dev 2>&1 | tee -a output.txt
 
+echo -e "\n\n#### Ouput for preprocess -- dev_fullwiki ######## \n\n" 2>&1 | tee -a output.txt
 python main.py --mode prepro --data_file "$dev_fullwiki" --data_split dev --fullwiki --para_limit 2250 2>&1 | tee -a output.txt
