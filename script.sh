@@ -43,3 +43,9 @@ python main.py --mode train --para_limit 2250 --batch_size 24 --init_lr 0.1 --ke
 
 for dir in HOTPOT*; do dir_name="$dir"; done
 echo $dir_name
+
+echo -e "\n\n#### Testing Model ######## \n\n" 2>&1 | tee -a output.txt
+python main.py --mode test --data_split dev --para_limit 2250 --batch_size 24 --init_lr 0.1 --keep_prob 1.0 --sp_lambda 1.0 --save "$dir_name" --prediction_file dev_distractor_pred.json 2>&1 | tee -a output.txt
+
+echo -e "\n\n#### Evaluate Model ######## \n\n" 2>&1 | tee -a output.txt
+python hotpot_evaluate_v1.py dev_distractor_pred.json hotpot_dev_distractor_v1.json 2>&1 | tee -a output.txt
