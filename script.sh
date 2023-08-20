@@ -1,9 +1,5 @@
 #!/bin/sh
 
-nvidia-smi 2>&1 | tee -a output.txt
-
-git clone https://github.com/Rakin061/hotpot.git 2>&1 | tee -a output.txt
-
 while getopts "a:b:" flag;	do
 	case "${flag}" in 
 		a) filename=${OPTARG} 
@@ -26,6 +22,18 @@ else
 	dev_distractor="hotpot_dev_distractor_v1.json"
 	dev_fullwiki="hotpot_dev_fullwiki_v1.json"
 fi 
+
+
+git clone https://github.com/Rakin061/hotpot.git 
+
+cd hotpot
+
+nvidia-smi  2>&1 | tee -a output.txt
+
+sh download.sh | tee -a output.txt
+
+python script.py 2>&1 | tee -a output.txt
+
 
 echo $train_file,$dev_distractor,$dev_fullwiki
 
