@@ -1,5 +1,9 @@
 #!/bin/sh
 
+nvidia-smi 2>&1 | tee -a output.txt
+
+git clone https://github.com/Rakin061/hotpot.git 2>&1 | tee -a output.txt
+
 while getopts "a:b:" flag;	do
 	case "${flag}" in 
 		a) filename=${OPTARG} 
@@ -33,3 +37,9 @@ python main.py --mode prepro --data_file "$dev_distractor" --para_limit 2250 --d
 
 echo -e "\n\n#### Ouput for preprocess -- dev_fullwiki ######## \n\n" 2>&1 | tee -a output.txt
 python main.py --mode prepro --data_file "$dev_fullwiki" --data_split dev --fullwiki --para_limit 2250 2>&1 | tee -a output.txt
+
+echo -e "\n\n#### Training Model ######## \n\n" 2>&1 | tee -a output.txt
+python main.py --mode train --para_limit 2250 --batch_size 24 --init_lr 0.1 --keep_prob 1.0 --sp_lambda 1.0 2>&1 | tee -a output.txt
+
+for dir in HOTPOT*; do dir_name="$dir"; done
+echo $dir_name
