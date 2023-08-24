@@ -24,9 +24,6 @@ else
 fi 
 
 
-git clone https://github.com/Rakin061/hotpot.git 
-
-cd hotpot
 
 nvidia-smi  2>&1 | tee -a output.txt
 
