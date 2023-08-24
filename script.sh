@@ -29,6 +29,8 @@ nvidia-smi  2>&1 | tee -a output.txt
 
 sh download.sh | tee -a output.txt
 
+rm -rf sample_train.json sample_dev_distractor.json sample_dev_fullwiki.json
+
 python script.py 2>&1 | tee -a output.txt
 
 
