@@ -31,7 +31,7 @@ sh download.sh | tee -a output.txt
 
 rm -rf sample_train.json sample_dev_distractor.json sample_dev_fullwiki.json
 
-python script.py 2>&1 | tee -a output.txt
+python script.py $size 2>&1 | tee -a output.txt
 
 
 echo $train_file,$dev_distractor,$dev_fullwiki
