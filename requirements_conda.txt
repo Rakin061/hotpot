@@ -1,4 +1,5 @@
 # This file may be used to create an environment using:
+# $ conda list -e > requirements_conda.txt
 # $ conda create --name <env> --file <this file>
 # platform: win-64
 blas=1.0=mkl
