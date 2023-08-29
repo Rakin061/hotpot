@@ -1,7 +1,8 @@
 import sys,json
 
-print(sys.argv[1])
-print(type(sys.argv[1]))
+num=int(sys.argv[1])
+print(num)
+
 
 with (
   open("hotpot_train_v1.1.json","r") as file_data1, open("hotpot_dev_distractor_v1.json","r") as file_data2, open("hotpot_dev_fullwiki_v1.json","r") as file_data3  ):
@@ -10,7 +11,7 @@ with (
   data3=json.load(file_data3)
 
 json_data1=json_data2=json_data3 =[]
-for i in range(sys.argv[1]):
+for i in range(num):
     json_data1.append(data1[i])
     json_data2.append(data2[i])
     json_data3.append(data3[i])
